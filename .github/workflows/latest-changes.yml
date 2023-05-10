@@ -1,5 +1,15 @@
 name: basic-quality-check
-on: pull_request
+on:
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - closed
+  workflow_dispatch:
+    inputs:
+      number:
+        description: PR number
+        required: true
 
 jobs:
   latest-changes:
