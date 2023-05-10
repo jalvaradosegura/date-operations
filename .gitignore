@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+dist/
+
+# coverage
+htmlcov/
+.coverage
+
+# macOS
+.DS_Store
+
+# Vim
+*.swp
+*.swo
