@@ -2,7 +2,7 @@ from typing import Tuple
 
 import pytest
 
-from date_operations.main import (
+from date_operations import (
     days_between,
     months_between,
     months_started_between,
