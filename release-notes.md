@@ -1,5 +1,6 @@
 ## Latest Changes
 
+* 🎨 Add `pre-commit`. PR [#7](https://github.com/jalvaradosegura/date-operations/pull/7) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 💚 Add coverage action. PR [#6](https://github.com/jalvaradosegura/date-operations/pull/6) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 📝 Add basic usage of the library. PR [#5](https://github.com/jalvaradosegura/date-operations/pull/5) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 🎨 Allow direct import of the main functions. PR [#4](https://github.com/jalvaradosegura/date-operations/pull/4) by [@jalvaradosegura](https://github.com/jalvaradosegura).
