@@ -5,6 +5,7 @@ dist/
 # coverage
 htmlcov/
 .coverage
+coverage.xml
 
 # macOS
 .DS_Store
