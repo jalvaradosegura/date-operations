@@ -1,3 +1,7 @@
+<a href="https://codecov.io/github/jalvaradosegura/date-operations" >
+    <img src="https://codecov.io/github/jalvaradosegura/date-operations/branch/main/graph/badge.svg?token=TO89NFDQ79"/> 
+</a>
+
 ---
 
 # date-operations
