@@ -217,7 +217,7 @@ def test_guess_date_format_decorator_no_guess_date_1():
 
     with pytest.raises(
         ValueError,
-        match=f"Couldn't guess the date format for date_1: {date_1}.",
+        match=f"Couldn't guess the date format for date: {date_1}.",
     ):
         days_between(date_1, date_2)
 
@@ -228,7 +228,7 @@ def test_guess_date_format_decorator_no_guess_date_2():
 
     with pytest.raises(
         ValueError,
-        match=f"Couldn't guess the date format for date_2: {date_2}.",
+        match=f"Couldn't guess the date format for date: {date_2}.",
     ):
         days_between(date_1, date_2)
 
