@@ -231,3 +231,11 @@ def test_guess_date_format_decorator_no_guess_date_2():
         match=f"Couldn't guess the date format for date_2: {date_2}.",
     ):
         days_between(date_1, date_2)
+
+
+def test_guess_date_format_decorator_custom_format():
+    date_1 = "2023-01-01"
+    date_2 = "2023-01-11"
+
+    assert days_between(date_1, date_2, format_1="%Y-%m-%d") == 10
+    assert days_between(date_1, date_2, format_2="%Y-%m-%d") == 10

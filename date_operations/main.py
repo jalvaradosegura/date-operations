@@ -17,22 +17,22 @@ def guess_date_format(func: Callable[[str, str, str, str, Optional[List[str]]], 
         extra_formats: Optional[List[str]] = None,
     ) -> int:
         if format_1 is None:
-            guessed_format_1 = _guess_date_format(date_1, extra_formats)
+            format_1 = _guess_date_format(date_1, extra_formats)
 
-            if guessed_format_1 is None:
+            if format_1 is None:
                 raise ValueError(
                     f"Couldn't guess the date format for date_1: {date_1}."
                 )
 
         if format_2 is None:
-            guessed_format_2 = _guess_date_format(date_2, extra_formats)
+            format_2 = _guess_date_format(date_2, extra_formats)
 
-            if guessed_format_2 is None:
+            if format_2 is None:
                 raise ValueError(
                     f"Couldn't guess the date format for date_2: {date_2}."
                 )
 
-        return func(date_1, date_2, guessed_format_1, guessed_format_2, extra_formats)
+        return func(date_1, date_2, format_1, format_2, extra_formats)
 
     return _wrapper
 
