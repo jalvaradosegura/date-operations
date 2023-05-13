@@ -2,6 +2,7 @@
 
 ## Latest Changes
 
+* 📝 Add docstrings to main functions. PR [#13](https://github.com/jalvaradosegura/date-operations/pull/13) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * ✨ Turn decorator into a simple function. PR [#12](https://github.com/jalvaradosegura/date-operations/pull/12) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 🐛 Fix `UnboundLocalError` in the decorator. PR [#11](https://github.com/jalvaradosegura/date-operations/pull/11) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * ✨ Add a decorator to guess the date formats. PR [#10](https://github.com/jalvaradosegura/date-operations/pull/10) by [@jalvaradosegura](https://github.com/jalvaradosegura).
