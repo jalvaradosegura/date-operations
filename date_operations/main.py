@@ -1,47 +1,113 @@
 from datetime import datetime
-from typing import List, Optional
+from functools import wraps
+from typing import Callable, List, Optional
 
 from dateutil.relativedelta import relativedelta
 
 from .settings import date_format_list
 
 
-def days_between(date_1: str, date_2: str) -> int:
+def guess_date_format(func: Callable[[str, str, str, str, Optional[List[str]]], int]):
+    @wraps(func)
+    def _wrapper(
+        date_1: str,
+        date_2: str,
+        format_1: Optional[str] = None,
+        format_2: Optional[str] = None,
+        extra_formats: Optional[List[str]] = None,
+    ) -> int:
+        if format_1 is None:
+            guessed_format_1 = _guess_date_format(date_1, extra_formats)
+
+            if guessed_format_1 is None:
+                raise ValueError(
+                    f"Couldn't guess the date format for date_1: {date_1}."
+                )
+
+        if format_2 is None:
+            guessed_format_2 = _guess_date_format(date_2, extra_formats)
+
+            if guessed_format_2 is None:
+                raise ValueError(
+                    f"Couldn't guess the date format for date_2: {date_2}."
+                )
+
+        return func(date_1, date_2, guessed_format_1, guessed_format_2, extra_formats)
+
+    return _wrapper
+
+
+@guess_date_format
+def days_between(
+    date_1: str,
+    date_2: str,
+    format_1: str,
+    format_2: str,
+    extra_formats: Optional[List[str]] = None,
+) -> int:
     return abs(
-        datetime.strptime(date_1, "%Y-%m-%d") - datetime.strptime(date_2, "%Y-%m-%d")
+        datetime.strptime(date_1, format_1) - datetime.strptime(date_2, format_2)
     ).days
 
 
-def months_between(date_1: str, date_2: str) -> int:
+@guess_date_format
+def months_between(
+    date_1: str,
+    date_2: str,
+    format_1: str,
+    format_2: str,
+    extra_formats: Optional[List[str]] = None,
+) -> int:
     delta = relativedelta(
-        datetime.strptime(date_1, "%Y-%m-%d"), datetime.strptime(date_2, "%Y-%m-%d")
+        datetime.strptime(date_1, format_1), datetime.strptime(date_2, format_2)
     )
     return abs(delta.months + (12 * delta.years))
 
 
-def months_started_between(date_1: str, date_2: str) -> int:
+@guess_date_format
+def months_started_between(
+    date_1: str,
+    date_2: str,
+    format_1: str,
+    format_2: str,
+    extra_formats: Optional[List[str]] = None,
+) -> int:
     months_started = (
-        datetime.strptime(date_1, "%Y-%m-%d").month
-        - datetime.strptime(date_2, "%Y-%m-%d").month
+        datetime.strptime(date_1, format_1).month
+        - datetime.strptime(date_2, format_2).month
     )
     years_started = (
-        datetime.strptime(date_1, "%Y-%m-%d").year
-        - datetime.strptime(date_2, "%Y-%m-%d").year
+        datetime.strptime(date_1, format_1).year
+        - datetime.strptime(date_2, format_2).year
     )
     return abs(years_started * 12 + months_started)
 
 
-def years_between(date_1: str, date_2: str) -> int:
+@guess_date_format
+def years_between(
+    date_1: str,
+    date_2: str,
+    format_1: str,
+    format_2: str,
+    extra_formats: Optional[List[str]] = None,
+) -> int:
     delta = relativedelta(
-        datetime.strptime(date_1, "%Y-%m-%d"), datetime.strptime(date_2, "%Y-%m-%d")
+        datetime.strptime(date_1, format_1), datetime.strptime(date_2, format_2)
     )
     return abs(delta.years)
 
 
-def years_started_between(date_1: str, date_2: str) -> int:
+@guess_date_format
+def years_started_between(
+    date_1: str,
+    date_2: str,
+    format_1: str,
+    format_2: str,
+    extra_formats: Optional[List[str]] = None,
+) -> int:
     years_started = (
-        datetime.strptime(date_1, "%Y-%m-%d").year
-        - datetime.strptime(date_2, "%Y-%m-%d").year
+        datetime.strptime(date_1, format_1).year
+        - datetime.strptime(date_2, format_2).year
     )
     return abs(years_started)
 

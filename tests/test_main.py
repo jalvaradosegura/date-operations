@@ -29,6 +29,20 @@ def test_days_between(dates: Tuple[str, str], result: int):
 @pytest.mark.parametrize(
     "dates, result",
     [
+        [("2023 01 01", "20230111"), 10],
+        [("2023/01/01", "01-01-2023"), 0],
+        [("01/01/2023", "01-feb-2023"), 31],
+        [("01 jan 2023", "01/jan/2024"), 365],
+    ],
+)
+def test_days_between_guess_formats(dates: Tuple[str, str], result: int):
+    date_1, date_2 = dates
+    assert days_between(date_1, date_2) == result
+
+
+@pytest.mark.parametrize(
+    "dates, result",
+    [
         [("2023-01-01", "2023-02-01"), 1],
         [("2023-02-01", "2023-01-01"), 1],
         [("2023-01-01", "2023-01-01"), 0],
@@ -37,6 +51,21 @@ def test_days_between(dates: Tuple[str, str], result: int):
     ],
 )
 def test_months_between(dates: Tuple[str, str], result: int):
+    date_1, date_2 = dates
+    assert months_between(date_1, date_2) == result
+
+
+@pytest.mark.parametrize(
+    "dates, result",
+    [
+        [("2023 01 01", "20230201"), 1],
+        [("2023/02/01", "01-01-2023"), 1],
+        [("2023-01", "2023-01"), 0],
+        [("01-2023", "jan-2024"), 12],
+        [("jan/2023", "feb 2023"), 1],
+    ],
+)
+def test_months_between_guess_format(dates: Tuple[str, str], result: int):
     date_1, date_2 = dates
     assert months_between(date_1, date_2) == result
 
@@ -62,6 +91,19 @@ def test_months_started_between(dates: Tuple[str, str], result: int):
 @pytest.mark.parametrize(
     "dates, result",
     [
+        [("2023-01-31", "2023/02/01"), 1],
+        [("2023 02 01", "01-2023"), 1],
+        [("20231231", "jan 2024"), 1],
+    ],
+)
+def test_months_started_between_guess_format(dates: Tuple[str, str], result: int):
+    date_1, date_2 = dates
+    assert months_started_between(date_1, date_2) == result
+
+
+@pytest.mark.parametrize(
+    "dates, result",
+    [
         [("2023-01-01", "2024-01-01"), 1],
         [("2023-01-01", "2022-01-01"), 1],
         [("2023-01-01", "2023-01-01"), 0],
@@ -70,6 +112,22 @@ def test_months_started_between(dates: Tuple[str, str], result: int):
     ],
 )
 def test_years_between(dates: Tuple[str, str], result: int):
+    date_1, date_2 = dates
+    assert years_between(date_1, date_2) == result
+
+
+@pytest.mark.parametrize(
+    "dates, result",
+    [
+        [("2023/01/01", "2024 01 01"), 1],
+        [("20230101", "2022-01"), 1],
+        [("2023-01", "202301"), 0],
+        [("2023-01-01", "2030-01"), 7],
+        [("2023-12", "2024-01"), 0],
+        [("2023-12", "2024-12"), 1],
+    ],
+)
+def test_years_between_guess_format(dates: Tuple[str, str], result: int):
     date_1, date_2 = dates
     assert years_between(date_1, date_2) == result
 
@@ -87,6 +145,19 @@ def test_years_between(dates: Tuple[str, str], result: int):
     ],
 )
 def test_years_started_between(dates: Tuple[str, str], result: int):
+    date_1, date_2 = dates
+    assert years_started_between(date_1, date_2) == result
+
+
+@pytest.mark.parametrize(
+    "dates, result",
+    [
+        [("2023-12", "2024-01"), 1],
+        [("2023 01 01", "2022/12/31"), 1],
+        [("jan-2023", "01-01-2030"), 7],
+    ],
+)
+def test_years_started_between_guess_format(dates: Tuple[str, str], result: int):
     date_1, date_2 = dates
     assert years_started_between(date_1, date_2) == result
 
@@ -138,3 +209,25 @@ def test_guess_date_format_with_extra_formats(
     date: str, date_format: str, extra_formats: List[str]
 ):
     assert _guess_date_format(date, extra_formats) == date_format
+
+
+def test_guess_date_format_decorator_no_guess_date_1():
+    date_1 = "invalid-date"
+    date_2 = "2023-01-11"
+
+    with pytest.raises(
+        ValueError,
+        match=f"Couldn't guess the date format for date_1: {date_1}.",
+    ):
+        days_between(date_1, date_2)
+
+
+def test_guess_date_format_decorator_no_guess_date_2():
+    date_1 = "2023-01-11"
+    date_2 = "invalid-date"
+
+    with pytest.raises(
+        ValueError,
+        match=f"Couldn't guess the date format for date_2: {date_2}.",
+    ):
+        days_between(date_1, date_2)
