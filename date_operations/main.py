@@ -1,6 +1,9 @@
 from datetime import datetime
+from typing import List, Optional
 
 from dateutil.relativedelta import relativedelta
+
+from .settings import date_format_list
 
 
 def days_between(date_1: str, date_2: str) -> int:
@@ -41,3 +44,22 @@ def years_started_between(date_1: str, date_2: str) -> int:
         - datetime.strptime(date_2, "%Y-%m-%d").year
     )
     return abs(years_started)
+
+
+def _guess_date_format(
+    date: str, extra_formats: Optional[List[str]] = None
+) -> Optional[str]:
+    if extra_formats is None:
+        extra_formats = []
+
+    date_formats = extra_formats + date_format_list
+
+    for date_format in date_formats:
+        try:
+            datetime.strptime(date, date_format)
+        except ValueError:
+            pass
+        else:
+            return date_format
+
+    return None
