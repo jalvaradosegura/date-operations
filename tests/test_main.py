@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import List, Optional, Tuple
 
 import pytest
 
@@ -9,6 +9,7 @@ from date_operations import (
     years_between,
     years_started_between,
 )
+from date_operations.main import _guess_date_format
 
 
 @pytest.mark.parametrize(
@@ -88,3 +89,52 @@ def test_years_between(dates: Tuple[str, str], result: int):
 def test_years_started_between(dates: Tuple[str, str], result: int):
     date_1, date_2 = dates
     assert years_started_between(date_1, date_2) == result
+
+
+@pytest.mark.parametrize(
+    "date, date_format",
+    [
+        ["10-10-2010", "%d-%m-%Y"],
+        ["10/10/2010", "%d/%m/%Y"],
+        ["10 10 2010", "%d %m %Y"],
+        ["10102010", "%d%m%Y"],
+        ["2010-10-10", "%Y-%m-%d"],
+        ["2010/10/10", "%Y/%m/%d"],
+        ["10-2010", "%m-%Y"],
+        ["10/2010", "%m/%Y"],
+        ["10 2010", "%m %Y"],
+        ["102010", "%m%Y"],
+        ["2010-10", "%Y-%m"],
+        ["2010/10", "%Y/%m"],
+        ["2010 10", "%Y %m"],
+        ["201010", "%Y%m"],
+        ["10-oct-2010", "%d-%b-%Y"],
+        ["10/oct/2010", "%d/%b/%Y"],
+        ["10 oct 2010", "%d %b %Y"],
+        ["10oct2010", "%d%b%Y"],
+        ["oct-2010", "%b-%Y"],
+        ["oct/2010", "%b/%Y"],
+        ["oct 2010", "%b %Y"],
+        ["oct2010", "%b%Y"],
+        ["unknown", None],
+    ],
+)
+def test_guess_date_format(date: str, date_format: Optional[str]):
+    assert _guess_date_format(date) == date_format
+
+
+@pytest.mark.parametrize(
+    "date, date_format, extra_formats",
+    [
+        ["2010 10 10", "%Y %m %d", ["%Y %m %d"]],
+        ["20101010", "%Y%m%d", ["%Y%m%d"]],
+        ["10 10 2010", "%m %d %Y", ["%m %d %Y"]],
+        ["10102010", "%m%d%Y", ["%m%d%Y"]],
+        ["10-10-2010", "%m-%d-%Y", ["%m-%d-%Y"]],
+        ["10/10/2010", "%m/%d/%Y", ["%m/%d/%Y"]],
+    ],
+)
+def test_guess_date_format_with_extra_formats(
+    date: str, date_format: str, extra_formats: List[str]
+):
+    assert _guess_date_format(date, extra_formats) == date_format
