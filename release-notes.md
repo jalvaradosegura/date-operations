@@ -2,6 +2,7 @@
 
 ## Latest Changes
 
+* 📝 Add `LICENSE`. PR [#14](https://github.com/jalvaradosegura/date-operations/pull/14) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 📝 Add docstrings to main functions. PR [#13](https://github.com/jalvaradosegura/date-operations/pull/13) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * ✨ Turn decorator into a simple function. PR [#12](https://github.com/jalvaradosegura/date-operations/pull/12) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 🐛 Fix `UnboundLocalError` in the decorator. PR [#11](https://github.com/jalvaradosegura/date-operations/pull/11) by [@jalvaradosegura](https://github.com/jalvaradosegura).
