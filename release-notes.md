@@ -2,6 +2,7 @@
 
 ## Latest Changes
 
+* 🐛 Fix `UnboundLocalError` in the decorator. PR [#11](https://github.com/jalvaradosegura/date-operations/pull/11) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * ✨ Add a decorator to guess the date formats. PR [#10](https://github.com/jalvaradosegura/date-operations/pull/10) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * ✨ Add function to guess format of given date [private function]. PR [#9](https://github.com/jalvaradosegura/date-operations/pull/9) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 ## 0.1.0
