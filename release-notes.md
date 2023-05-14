@@ -2,15 +2,22 @@
 
 ## Latest Changes
 
-* 📝 Add `__version__` variable to the library. PR [#17](https://github.com/jalvaradosegura/date-operations/pull/17) by [@jalvaradosegura](https://github.com/jalvaradosegura).
-* 📝 Add details to the usage section of `README.md`. PR [#16](https://github.com/jalvaradosegura/date-operations/pull/16) by [@jalvaradosegura](https://github.com/jalvaradosegura).
-* 🐛 Add `extra_formats` to the default list. PR [#15](https://github.com/jalvaradosegura/date-operations/pull/15) by [@jalvaradosegura](https://github.com/jalvaradosegura).
-* 📝 Add `LICENSE`. PR [#14](https://github.com/jalvaradosegura/date-operations/pull/14) by [@jalvaradosegura](https://github.com/jalvaradosegura).
-* 📝 Add docstrings to main functions. PR [#13](https://github.com/jalvaradosegura/date-operations/pull/13) by [@jalvaradosegura](https://github.com/jalvaradosegura).
+
+### Features
 * ✨ Turn decorator into a simple function. PR [#12](https://github.com/jalvaradosegura/date-operations/pull/12) by [@jalvaradosegura](https://github.com/jalvaradosegura).
-* 🐛 Fix `UnboundLocalError` in the decorator. PR [#11](https://github.com/jalvaradosegura/date-operations/pull/11) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * ✨ Add a decorator to guess the date formats. PR [#10](https://github.com/jalvaradosegura/date-operations/pull/10) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * ✨ Add function to guess format of given date [private function]. PR [#9](https://github.com/jalvaradosegura/date-operations/pull/9) by [@jalvaradosegura](https://github.com/jalvaradosegura).
+
+### Docs
+* 📝 Add `__version__` variable to the library. PR [#17](https://github.com/jalvaradosegura/date-operations/pull/17) by [@jalvaradosegura](https://github.com/jalvaradosegura).
+* 📝 Add details to the usage section of `README.md`. PR [#16](https://github.com/jalvaradosegura/date-operations/pull/16) by [@jalvaradosegura](https://github.com/jalvaradosegura).
+* 📝 Add `LICENSE`. PR [#14](https://github.com/jalvaradosegura/date-operations/pull/14) by [@jalvaradosegura](https://github.com/jalvaradosegura).
+* 📝 Add docstrings to main functions. PR [#13](https://github.com/jalvaradosegura/date-operations/pull/13) by [@jalvaradosegura](https://github.com/jalvaradosegura).
+
+### Fixes
+* 🐛 Add `extra_formats` to the default list. PR [#15](https://github.com/jalvaradosegura/date-operations/pull/15) by [@jalvaradosegura](https://github.com/jalvaradosegura).
+* 🐛 Fix `UnboundLocalError` in the decorator. PR [#11](https://github.com/jalvaradosegura/date-operations/pull/11) by [@jalvaradosegura](https://github.com/jalvaradosegura).
+
 ## 0.1.0
 
 ### Features
