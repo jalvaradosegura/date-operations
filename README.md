@@ -9,6 +9,12 @@
 
 ---
 
+## Installation
+
+```console
+pip install date-operations
+```
+
 ## Usage
 ### Days between 2 dates
 Get the amount of days between 2 dates:
