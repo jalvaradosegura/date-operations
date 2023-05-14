@@ -211,7 +211,7 @@ def test_guess_date_format_with_extra_formats(
     assert _guess_date_format(date, extra_formats) == date_format
 
 
-def test_guess_date_format_decorator_no_guess_date_1():
+def test_no_guess_date_1():
     date_1 = "invalid-date"
     date_2 = "2023-01-11"
 
@@ -222,7 +222,7 @@ def test_guess_date_format_decorator_no_guess_date_1():
         days_between(date_1, date_2)
 
 
-def test_guess_date_format_decorator_no_guess_date_2():
+def test_no_guess_date_2():
     date_1 = "2023-01-11"
     date_2 = "invalid-date"
 
@@ -233,9 +233,27 @@ def test_guess_date_format_decorator_no_guess_date_2():
         days_between(date_1, date_2)
 
 
-def test_guess_date_format_decorator_custom_format():
-    date_1 = "2023-01-01"
-    date_2 = "2023-01-11"
+def test_use_custom_formats():
+    assert days_between("01", "09", format_1="%d", format_2="%d") == 8
+    assert months_between("01-01", "01-02", format_1="%d-%m", format_2="%d-%m") == 1
+    assert (
+        months_started_between("01/01", "01/02", format_1="%d/%m", format_2="%d/%m")
+        == 1
+    )
+    assert years_between("2000", "2023-31", format_1="%Y", format_2="%Y-%d") == 23
+    assert (
+        years_started_between("2000", "2023 31", format_1="%Y", format_2="%Y %d") == 23
+    )
 
-    assert days_between(date_1, date_2, format_1="%Y-%m-%d") == 10
-    assert days_between(date_1, date_2, format_2="%Y-%m-%d") == 10
+
+def test_use_extra_formats():
+    """
+    If you are aware of possible date formats that are not included in the default
+    format list, you can add them using the `extra_formats` parameter. These additional
+    formats will be given priority in the date format detection process.
+    """
+    assert days_between("01", "09", extra_formats=["%d"]) == 8
+    assert months_between("01-01", "01-02", extra_formats=["%d-%m"]) == 1
+    assert months_started_between("01/01", "01/02", extra_formats=["%d/%m"]) == 1
+    assert years_between("2000", "2023-31", extra_formats=["%Y", "%Y-%d"]) == 23
+    assert years_started_between("2000", "2023 31", extra_formats=["%Y", "%Y %d"]) == 23

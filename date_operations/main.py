@@ -163,7 +163,7 @@ def _to_datetime(
     date: str, _format: Optional[str], extra_formats: Optional[List[str]]
 ) -> datetime:
     if _format is None:
-        _format = _guess_date_format(date, _format)
+        _format = _guess_date_format(date, extra_formats)
 
     if _format is None:
         raise ValueError(f"Couldn't guess the date format for date: {date}.")
