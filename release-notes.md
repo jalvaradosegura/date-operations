@@ -2,6 +2,7 @@
 
 ## Latest Changes
 
+* 📝 Add installation section to `README.md`. PR [#18](https://github.com/jalvaradosegura/date-operations/pull/18) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 
 ## 0.2.0
 
