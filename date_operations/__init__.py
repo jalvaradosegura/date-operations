@@ -1,3 +1,7 @@
+"""🗓 Easy to use functions for common date operations"""
+
+__version__ = "0.1.0"
+
 from .main import (
     days_between,
     months_between,
