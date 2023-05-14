@@ -2,6 +2,7 @@
 
 ## Latest Changes
 
+* 📝 Add `__version__` variable to the library. PR [#17](https://github.com/jalvaradosegura/date-operations/pull/17) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 📝 Add details to the usage section of `README.md`. PR [#16](https://github.com/jalvaradosegura/date-operations/pull/16) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 🐛 Add `extra_formats` to the default list. PR [#15](https://github.com/jalvaradosegura/date-operations/pull/15) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 📝 Add `LICENSE`. PR [#14](https://github.com/jalvaradosegura/date-operations/pull/14) by [@jalvaradosegura](https://github.com/jalvaradosegura).
