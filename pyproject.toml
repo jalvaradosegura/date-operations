@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "date-operations"
 version = "0.2.0"
-description = ""
+description = "🗓 Easy to use functions for common date operations"
 authors = ["Jorge Alvarado <alvaradosegurajorge@gmail.com>"]
 readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/jalvaradosegura/date-operations"
+repository = "https://github.com/jalvaradosegura/date-operations"
 packages = [{include = "date_operations"}]
 
 [tool.poetry.dependencies]
