@@ -2,6 +2,7 @@
 
 ## Latest Changes
 
+* 🐛 Add `extra_formats` to the default list. PR [#15](https://github.com/jalvaradosegura/date-operations/pull/15) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 📝 Add `LICENSE`. PR [#14](https://github.com/jalvaradosegura/date-operations/pull/14) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 📝 Add docstrings to main functions. PR [#13](https://github.com/jalvaradosegura/date-operations/pull/13) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * ✨ Turn decorator into a simple function. PR [#12](https://github.com/jalvaradosegura/date-operations/pull/12) by [@jalvaradosegura](https://github.com/jalvaradosegura).
