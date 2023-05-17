@@ -2,6 +2,7 @@
 
 ## Latest Changes
 
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#20](https://github.com/jalvaradosegura/date-operations/pull/20) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
 * 📝 Add more library details to `pyproject.toml`. PR [#19](https://github.com/jalvaradosegura/date-operations/pull/19) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 * 📝 Add installation section to `README.md`. PR [#18](https://github.com/jalvaradosegura/date-operations/pull/18) by [@jalvaradosegura](https://github.com/jalvaradosegura).
 
